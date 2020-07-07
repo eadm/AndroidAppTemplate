@@ -1,9 +1,6 @@
 package ru.nobird.template.view.injection.network
 
 import com.google.gson.GsonBuilder
-import ru.nobird.template.remote.base.model.Config
-import ru.nobird.template.remote.base.serialization.UTCDateAdapter
-import ru.nobird.template.view.injection.qualifiers.StethoInterceptor
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -11,6 +8,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.nobird.template.remote.base.model.Config
+import ru.nobird.template.remote.base.serialization.UTCDateAdapter
+import ru.nobird.template.view.injection.qualifiers.StethoInterceptor
 import java.util.Date
 
 @Module(includes = [NetworkUtilModule::class])

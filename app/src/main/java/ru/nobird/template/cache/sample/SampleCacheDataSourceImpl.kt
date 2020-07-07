@@ -1,8 +1,8 @@
 package ru.nobird.template.cache.sample
 
-import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import io.reactivex.Completable
 import io.reactivex.Maybe
+import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import javax.inject.Inject
 
 class SampleCacheDataSourceImpl

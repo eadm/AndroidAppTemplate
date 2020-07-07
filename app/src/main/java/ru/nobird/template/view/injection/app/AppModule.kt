@@ -3,10 +3,6 @@ package ru.nobird.template.view.injection.app
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModelProvider
-import ru.nobird.template.remote.base.model.Config
-import ru.nobird.template.view.injection.qualifiers.AppSharedPreferences
-import ru.nobird.template.view.injection.qualifiers.BackgroundScheduler
-import ru.nobird.template.view.injection.qualifiers.MainScheduler
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -14,6 +10,10 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.nobird.android.view.injection.base.presentation.DaggerViewModelFactory
+import ru.nobird.template.remote.base.model.Config
+import ru.nobird.template.view.injection.qualifiers.AppSharedPreferences
+import ru.nobird.template.view.injection.qualifiers.BackgroundScheduler
+import ru.nobird.template.view.injection.qualifiers.MainScheduler
 
 @Module
 abstract class AppModule {

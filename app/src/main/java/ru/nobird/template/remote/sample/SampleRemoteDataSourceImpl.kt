@@ -1,10 +1,10 @@
 package ru.nobird.template.remote.sample
 
 import io.reactivex.Single
+import io.reactivex.functions.Function
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
 import ru.nobird.template.remote.sample.model.SampleResponse
 import ru.nobird.template.remote.sample.service.SampleService
-import io.reactivex.functions.Function
 import javax.inject.Inject
 
 class SampleRemoteDataSourceImpl

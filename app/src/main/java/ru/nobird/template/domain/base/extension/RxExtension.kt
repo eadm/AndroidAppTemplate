@@ -1,10 +1,10 @@
 package ru.nobird.template.domain.base.extension
 
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.Completable
 
 data class RxOptional<out T>(val value: T?) {
     fun <R> map(f: (T) -> R?): RxOptional<R> =
