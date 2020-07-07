@@ -1,9 +1,6 @@
 package ru.nobird.template.view.main.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -13,7 +10,7 @@ import ru.nobird.template.presentation.main.MainPresenter
 import ru.nobird.template.presentation.main.MainView
 import javax.inject.Inject
 
-class MainFragment : Fragment(), MainView {
+class MainFragment : Fragment(R.layout.fragment_main), MainView {
     companion object {
         fun newInstance(): Fragment =
             MainFragment()
@@ -37,9 +34,6 @@ class MainFragment : Fragment(), MainView {
             .build()
             .inject(this)
     }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_main, container, false)
 
     override fun onStart() {
         super.onStart()

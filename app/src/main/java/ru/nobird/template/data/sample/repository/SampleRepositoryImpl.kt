@@ -1,10 +1,10 @@
 package ru.nobird.template.data.sample.repository
 
 import io.reactivex.Single
+import ru.nobird.android.domain.rx.doCompletableOnSuccess
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
 import ru.nobird.template.domain.base.DataSourceType
-import ru.nobird.template.domain.base.extension.doCompletableOnSuccess
 import ru.nobird.template.domain.sample.repository.SampleRepository
 import javax.inject.Inject
 

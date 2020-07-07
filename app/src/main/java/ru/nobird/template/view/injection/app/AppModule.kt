@@ -9,11 +9,10 @@ import dagger.Provides
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import ru.nobird.android.view.injection.base.RxScheduler
 import ru.nobird.android.view.injection.base.presentation.DaggerViewModelFactory
 import ru.nobird.template.remote.base.model.Config
 import ru.nobird.template.view.injection.qualifiers.AppSharedPreferences
-import ru.nobird.template.view.injection.qualifiers.BackgroundScheduler
-import ru.nobird.template.view.injection.qualifiers.MainScheduler
 
 @Module
 abstract class AppModule {
@@ -32,13 +31,13 @@ abstract class AppModule {
 
         @Provides
         @JvmStatic
-        @MainScheduler
+        @RxScheduler.Main
         internal fun provideAndroidScheduler(): Scheduler =
             AndroidSchedulers.mainThread()
 
         @Provides
         @JvmStatic
-        @BackgroundScheduler
+        @RxScheduler.Background
         internal fun provideBackgroundScheduler(): Scheduler =
             Schedulers.io()
 
