@@ -79,23 +79,11 @@ dependencies {
     implementation libraries.viewInjection
     implementation libraries.model
 
-//    implementation libraries.googleMaps
-//    implementation libraries.googleMapsUtils
-//    implementation libraries.reactiveLocation
-//    implementation libraries.playLocations
-//    implementation libraries.playPlaces
-
 //    implementation libraries.permissionDispatcher
 //    kapt libraries.permissionDispatcherProcessor
-
-//    implementation libraries.inputMask
-//    implementation libraries.pageIndicatorView
-//    implementation libraries.expandableTextView
-
     implementation libraries.kotpref
 
     implementation libraries.cicerone
-    implementation libraries.qrgen
 
     implementation libraries.archExtensions
     implementation libraries.archViewModel
