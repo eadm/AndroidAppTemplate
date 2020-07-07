@@ -1,0 +1,34 @@
+repositories {
+    jcenter()
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    ktlint libraries.ktlint
+    ktlint files('../app/libs/ktlint_rules.jar')
+    // additional 3rd party ruleset(s) can be specified here
+    // just add them to the classpath (ktlint 'groupId:artifactId:version') and
+    // ktlint will pick them up
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    main = "org.stepik.android.ktlint.Main"
+    classpath = configurations.ktlint
+//    args "src/main/java/org/stepic/droid/di/AppCoreModule.kt"
+    args = ["--rules-to-ignore=no-multi-spaces,package-name", "src/main/java/**/*.kt"]
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/shyiko/ktlint#usage for more
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "org.stepik.android.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}

@@ -1,0 +1,152 @@
+ext.versions = [
+        code                : 3,
+        name                : '0.6.0',
+
+        minSdk              : 21,
+        targetSdk           : 28,
+        compileSdk          : 28,
+
+        androidGradlePlugin : '3.5.0',
+        kotlin              : '1.3.41',
+
+        dexcount            : '0.8.6',
+
+        dagger              : '2.22.1',
+
+        rxJava2             : '2.2.8',
+        rxAndroid           : '2.1.1',
+        rxKotlin            : '2.3.0',
+
+        androidx            : '1.0.2',
+        ktx                 : '1.1.0',
+        viewPager           : '1.0.0',
+        recyclerview        : '1.0.0',
+        cardview            : '1.0.0',
+        archComponents      : '2.0.0',
+        material            : '1.0.0',
+        flexbox             : '1.1.0',
+        calendarView        : '0.2.8',
+        panoramaView        : '1.0',
+        permissionDispatcher: '4.3.1',
+
+        presentationBase    : '1.0.0',
+        adapterDelegates    : '1.0.1',
+        adapters            : '1.0.1',
+        viewStateDelegate   : '1.0.0',
+        viewUI              : '1.0.3',
+        viewNavigation      : '1.0.1',
+        viewInjection       : '1.0.0',
+        model               : '1.0.1',
+
+        googleMaps          : '16.1.0',
+        googleMapsUtils     : '0.5',
+        reactiveLocation    : '2.1@aar',
+        playLocations       : '17.0.0',
+        playPlaces          : '17.0.0',
+
+        inputMask           : '1.3.5',
+        qrgen               : '2.5.0',
+        pageIndicatorView   : '1.0.3',
+        expandableTextView  : '1.0.5',
+
+        cicerone            : '5.0.0',
+
+        kotpref             : '2.9.2',
+
+        constraintLayout    : '1.1.3',
+
+        retrofit            : '2.5.0',
+        gson                : '2.8.5',
+
+        glide               : '4.9.0',
+        glideTransformations: '4.0.0',
+
+        junit               : '4.12',
+        robolectric         : '3.1.2',
+        mockito             : '2.23.4',
+        mockitoKt           : '2.0.0',
+
+        stetho              : '1.5.1',
+
+        ktlint              : '0.30.0',
+        rangeSeekBar        : '1.1.3'
+]
+
+ext.gradlePlugins = [
+        kotlin  : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        android : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
+        dexcount: "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$versions.dexcount"
+]
+
+ext.libraries = [
+        kotlinStd            : "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+
+        dagger               : "com.google.dagger:dagger:$versions.dagger",
+        daggerCompiler       : "com.google.dagger:dagger-compiler:$versions.dagger",
+
+        rxJava2              : "io.reactivex.rxjava2:rxjava:$versions.rxJava2",
+        rxAndroid            : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+        rxKotlin             : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
+
+        appCompat            : "androidx.appcompat:appcompat:$versions.androidx",
+        ktx                  : "androidx.core:core-ktx:$versions.ktx",
+        viewPager            : "androidx.viewpager:viewpager:$versions.viewPager",
+        recyclerview         : "androidx.recyclerview:recyclerview:$versions.recyclerview",
+        cardView             : "androidx.cardview:cardview:$versions.cardView",
+        constraintLayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
+        material             : "com.google.android.material:material:$versions.material",
+        flexbox              : "com.google.android:flexbox:$versions.flexbox",
+        panoramaView         : "com.gjiazhe:PanoramaImageView:$versions.panoramaView",
+        calendarView         : "com.github.kizitonwose:CalendarView:$versions.calendarView",
+
+
+        presentationBase     : "ru.nobird.android.presentation:base:$versions.presentationBase",
+        adapterDelegates     : "ru.nobird.android.ui:AdapterDelegates:$versions.adapterDelegates",
+        adapters             : "ru.nobird.android.ui:Adapters:$versions.adapters",
+        viewStateDelegate    : "ru.nobird.android.ui:ViewStateDelegate:$versions.viewStateDelegate",
+        viewUI               : "ru.nobird.android.view:ui:$versions.viewUI",
+        viewNavigation       : "ru.nobird.android.view:navigation:$versions.viewNavigation",
+        viewInjection        : "ru.nobird.android.view:injection:$versions.viewInjection",
+        model                : "ru.nobird.android.core:model:$versions.model",
+
+        permissionDispatcher : "org.permissionsdispatcher:permissionsdispatcher:$versions.permissionDispatcher",
+        permissionDispatcherProcessor
+                             : "org.permissionsdispatcher:permissionsdispatcher-processor:$versions.permissionDispatcher",
+
+        googleMaps           : "com.google.android.gms:play-services-maps:$versions.googleMaps",
+        googleMapsUtils      : "com.google.maps.android:android-maps-utils:$versions.googleMapsUtils",
+        reactiveLocation     : "pl.charmas.android:android-reactive-location2:$versions.reactiveLocation",
+        playLocations        : "com.google.android.gms:play-services-location:$versions.playLocations",
+        playPlaces           : "com.google.android.gms:play-services-places:$versions.playPlaces",
+
+        inputMask            : "ru.tinkoff.decoro:decoro:$versions.inputMask",
+        pageIndicatorView    : "com.romandanylyk:pageindicatorview:$versions.pageIndicatorView",
+        expandableTextView   : "at.blogc:expandabletextview:$versions.expandableTextView",
+
+        kotpref              : "com.chibatching.kotpref:kotpref:$versions.kotpref",
+        kotprefAutoInit      : "com.chibatching.kotpref:initializer:$versions.kotpref",
+
+        cicerone             : "ru.terrakok.cicerone:cicerone:$versions.cicerone",
+        qrgen                : "com.github.kenglxn.QRGen:android:$versions.qrgen",
+
+        archExtensions       : "androidx.lifecycle:lifecycle-extensions:$versions.archComponents",
+        archViewModel        : "androidx.lifecycle:lifecycle-viewmodel:$versions.archComponents",
+
+        retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        retrofitRxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+        gson                 : "com.google.code.gson:gson:$versions.gson",
+
+        glide                : "com.github.bumptech.glide:glide:$versions.glide",
+        glideTransformations : "jp.wasabeef:glide-transformations:$versions.glideTransformations",
+
+        junit                : "junit:junit:$versions.junit",
+        robolectric          : "org.robolectric:robolectric:$versions.robolectric",
+        mockitoCore          : "org.mockito:mockito-core:$versions.mockito",
+        mockitoKt            : "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKt",
+
+        stetho               : "com.facebook.stetho:stetho:$versions.stetho",
+        stethoOkHttp         : "com.facebook.stetho:stetho-okhttp3:$versions.stetho",
+
+        ktlint               : "com.github.shyiko:ktlint:$versions.ktlint"
+]
