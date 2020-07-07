@@ -71,12 +71,11 @@ dependencies {
     implementation libraries.panoramaView
     implementation libraries.calendarView
 
+    implementation libraries.domainRx
     implementation libraries.presentationBase
     implementation libraries.adapterDelegates
     implementation libraries.adapters
-    implementation libraries.viewStateDelegate
     implementation libraries.viewUI
-    implementation libraries.viewNavigation
     implementation libraries.viewInjection
     implementation libraries.model
 
