@@ -1,2 +1,2 @@
-# adg_scanner_android
+# android app template
 
