@@ -57,7 +57,9 @@ ext.versions = [
         stetho              : '1.5.1',
 
         ktlint              : '0.37.1',
-        ktlintRules         : '1.0.0'
+        ktlintRules         : '1.0.0',
+
+        room                 : '2.2.1'
 ]
 
 ext.gradlePlugins = [
@@ -127,4 +129,8 @@ ext.libraries = [
 
         ktlint               : "com.pinterest:ktlint:$versions.ktlint",
         ktlintRules          : "ru.nobird.android.ktlint:rules:$versions.ktlintRules",
+
+        roomRuntime           : "androidx.room:room-runtime:$versions.room",
+        roomCompiler          : "androidx.room:room-compiler:$versions.room",
+        roomRx                : "androidx.room:room-rxjava2:$versions.room"
 ]

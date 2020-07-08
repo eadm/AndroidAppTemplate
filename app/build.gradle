@@ -100,6 +100,11 @@ dependencies {
     debugImplementation libraries.stetho
     debugImplementation libraries.stethoOkHttp
 
+    /*--Room--*/
+    implementation libraries.roomRuntime
+    implementation libraries.roomRx
+    kapt libraries.roomCompiler
+
     testImplementation libraries.junit
     testImplementation libraries.robolectric
     testImplementation libraries.mockitoCore

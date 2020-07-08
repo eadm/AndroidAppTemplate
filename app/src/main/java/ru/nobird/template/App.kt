@@ -1,12 +1,10 @@
 package ru.nobird.template
 
 import android.app.Application
-import com.jakewharton.threetenabp.AndroidThreeTen
 import ru.nobird.android.view.base.ui.extension.isMainProcess
 import ru.nobird.template.view.injection.app.AppComponent
 import ru.nobird.template.view.injection.app.ComponentManager
 import ru.nobird.template.view.injection.app.DaggerAppComponent
-import ru.nobird.template.view.util.StethoHelper
 
 class App : Application() {
     companion object {
@@ -27,8 +25,7 @@ class App : Application() {
         super.onCreate()
         if (!isMainProcess) return
 
-        StethoHelper.initStetho(this)
-        AndroidThreeTen.init(this)
+//        StethoHelper.initStetho(this)
 
         application = this
         component = DaggerAppComponent.builder()

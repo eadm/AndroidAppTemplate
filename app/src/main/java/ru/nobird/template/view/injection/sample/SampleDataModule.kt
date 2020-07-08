@@ -4,7 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import ru.nobird.template.cache.common.AppDatabase
 import ru.nobird.template.cache.sample.SampleCacheDataSourceImpl
+import ru.nobird.template.cache.sample.dao.SampleDao
 import ru.nobird.template.data.sample.repository.SampleRepositoryImpl
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
@@ -36,5 +38,10 @@ abstract class SampleDataModule {
         @Provides
         fun provideSampleService(retrofit: Retrofit): SampleService =
             retrofit.create(SampleService::class.java)
+
+        @Provides
+        @JvmStatic
+        fun provideEventDao(db: AppDatabase): SampleDao =
+            db.getSampleDaoDao()
     }
 }
