@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#008577</color>
-    <color name="color_primary_dark">#00574B</color>
-    <color name="color_accent">#9ACC4D</color>
+    <!-- AppTheme -->
+    <color name="color_primary">@color/color_brown_700</color>
+    <color name="color_primary_variant">@color/color_brown_700</color>
+
+    <color name="color_secondary">@color/color_violet_300</color>
+    <color name="color_secondary_variant">@color/color_violet_300</color>
+
+    <color name="color_background">@color/white</color>
+    <color name="color_surface">@color/white</color>
+    <color name="color_error">@color/color_red_500</color>
+
+    <color name="color_on_primary">@color/white</color>
+    <color name="color_on_secondary">@color/white</color>
+    <color name="color_on_background">@color/black</color>
+    <color name="color_on_surface">@color/black</color>
+    <color name="color_on_error">@color/white</color>
+
+    <!-- Color palette -->
+    <color name="color_brown_700">#535366</color>
+    <color name="color_brown_400">#AFAEC4</color>
+    <color name="color_brown_300">#D3D2E9</color>
+
+    <color name="color_violet_300">#6C7BDF</color>
+    <color name="color_violet_200">#98A0E8</color>
+
+    <color name="color_red_500">#FF3329</color>
+    <color name="color_red_300">#FF7965</color>
+
+    <color name="color_green_400">#66CC66</color>
+    <color name="color_green_300">#83D683</color>
+    <color name="color_green_200">#A8E1A7</color>
+
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+
+    <color name="grey03">#CCCCCC</color>
+    <color name="grey04">#EAECF0</color>
+
+    <color name="black_alpha_30">#4D000000</color>
 </resources>
