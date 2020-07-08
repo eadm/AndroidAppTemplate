@@ -77,6 +77,7 @@ dependencies {
     implementation libraries.adapters
     implementation libraries.viewUI
     implementation libraries.viewInjection
+    implementation libraries.viewNavigation
     implementation libraries.model
 
 //    implementation libraries.permissionDispatcher
