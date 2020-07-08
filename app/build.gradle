@@ -103,7 +103,6 @@ dependencies {
     /*--Room--*/
     implementation libraries.roomRuntime
     implementation libraries.roomRx
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt libraries.roomCompiler
 
     testImplementation libraries.junit

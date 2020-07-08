@@ -1,7 +1,6 @@
 package ru.nobird.template
 
 import android.app.Application
-import com.jakewharton.threetenabp.AndroidThreeTen
 import ru.nobird.android.view.base.ui.extension.isMainProcess
 import ru.nobird.template.view.injection.app.AppComponent
 import ru.nobird.template.view.injection.app.ComponentManager
@@ -27,7 +26,6 @@ class App : Application() {
         if (!isMainProcess) return
 
 //        StethoHelper.initStetho(this)
-        AndroidThreeTen.init(this)
 
         application = this
         component = DaggerAppComponent.builder()

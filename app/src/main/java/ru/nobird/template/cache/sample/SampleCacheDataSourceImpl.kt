@@ -13,7 +13,8 @@ class SampleCacheDataSourceImpl
 @Inject
 constructor(
     private val sampleStorage: SampleStorage,
-    private val sampleDao: SampleDao
+    private val sampleDao: SampleDao,
+    private val mapper: SampleDbMapper
 ) : SampleCacheDataSource {
     override fun getSampleVal(): Maybe<String> =
         Maybe.fromCallable { sampleStorage.sampleVal }
@@ -24,11 +25,11 @@ constructor(
         }
 
     override fun saveSampleEntries(data: List<SampleEntry>): Completable =
-        sampleDao.save(data.map(SampleDbMapper::toDb))
+        sampleDao.save(data.map(mapper::toDb))
 
     override fun getSampleEntries(): Single<List<SampleEntry>> =
-        sampleDao.getAll().map(SampleDbMapper::fromDb)
+        sampleDao.getAll().map(mapper::fromDb)
 
     override fun getSampleEntry(id: Long): Single<SampleEntry> =
-        sampleDao.getById(id).map(SampleDbMapper::fromDb)
+        sampleDao.getById(id).map(mapper::fromDb)
 }
