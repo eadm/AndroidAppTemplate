@@ -109,6 +109,15 @@ dependencies {
     testImplementation libraries.robolectric
     testImplementation libraries.mockitoCore
     testImplementation libraries.mockitoKt
+
+    /**
+     * Flipper
+     */
+    debugImplementation libraries.soloader
+    debugImplementation libraries.flipperCore
+    debugImplementation libraries.flipperNetwork
+
+    releaseImplementation libraries.flipperNoop
 }
 
 apply plugin: 'com.getkeepsafe.dexcount'
