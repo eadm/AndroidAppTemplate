@@ -3,7 +3,7 @@ name: Feature Branch CI
 on:
   push:
     branches:
-      - '*'
+      - 'feature/*'
 
 jobs:
   ci:

@@ -37,7 +37,7 @@ android {
         }
 
         debug {
-            minifyEnabled false
+            minifyEnabled true
             shrinkResources false
             versionNameSuffix "-debug"
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-rules-debug.pro'
@@ -73,8 +73,6 @@ dependencies {
     implementation libraries.constraintLayout
     implementation libraries.material
     implementation libraries.flexbox
-    implementation libraries.panoramaView
-    implementation libraries.calendarView
 
     implementation libraries.domainRx
     implementation libraries.presentationBase
@@ -88,7 +86,6 @@ dependencies {
 //    implementation libraries.permissionDispatcher
 //    kapt libraries.permissionDispatcherProcessor
     implementation libraries.kotpref
-
     implementation libraries.cicerone
 
     implementation libraries.archExtensions

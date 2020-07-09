@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity(), BackNavigable {
     private val navigator = SupportAppNavigator(this, supportFragmentManager, R.id.main_container)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         injectComponent()
         setContentView(R.layout.activity_main)

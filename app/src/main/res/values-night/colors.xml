@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AppTheme -->
+    <color name="color_primary">@color/grey04</color>
+    <color name="color_primary_variant">@color/grey03</color>
+
+    <color name="color_secondary">@color/color_violet_200</color>
+    <color name="color_secondary_variant">@color/color_violet_200</color>
+
+    <color name="color_background">#121212</color>
+    <color name="color_surface">#121212</color>
+    <color name="color_error">@color/color_red_300</color>
+
+    <color name="color_on_primary">@color/black</color>
+    <color name="color_on_secondary">@color/black</color>
+    <color name="color_on_background">@color/white</color>
+
+    <color name="color_on_surface">@color/white</color>
+    <color name="color_on_surface_emphasis_medium">#99FFFFFF</color>
+
+    <color name="color_on_error">@color/black</color>
+
+    <color name="color_status_bar">@color/color_background</color>
+</resources>
