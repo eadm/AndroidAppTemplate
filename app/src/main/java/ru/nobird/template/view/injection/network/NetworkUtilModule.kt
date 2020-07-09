@@ -1,16 +1,19 @@
 package ru.nobird.template.view.injection.network
 
 import dagger.Module
-// import ru.nobird.template.view.util.StethoHelper
+import dagger.Provides
+import okhttp3.Interceptor
+import ru.nobird.template.view.debug.DebugTools
+import ru.nobird.template.view.injection.qualifiers.DebugInterceptors
 
 @Module
 abstract class NetworkUtilModule {
     @Module
     companion object {
-//        @Provides
-//        @JvmStatic
-//        @StethoInterceptor
-//        fun provideStethoInterceptor(): Interceptor =
-//            StethoHelper.getInterceptor()
+        @Provides
+        @JvmStatic
+        @DebugInterceptors
+        fun provideInterceptors(): List<Interceptor> =
+            DebugTools.getDebugInterceptors()
     }
 }

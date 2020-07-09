@@ -59,7 +59,10 @@ ext.versions = [
         ktlint              : '0.37.1',
         ktlintRules         : '1.0.0',
 
-        room                 : '2.2.1'
+        room                 : '2.2.1',
+
+        flipper              : '0.49.0',
+        soloader             : '0.9.0',
 ]
 
 ext.gradlePlugins = [
@@ -132,5 +135,10 @@ ext.libraries = [
 
         roomRuntime           : "androidx.room:room-runtime:$versions.room",
         roomCompiler          : "androidx.room:room-compiler:$versions.room",
-        roomRx                : "androidx.room:room-rxjava2:$versions.room"
+        roomRx                : "androidx.room:room-rxjava2:$versions.room",
+
+        flipperCore          : "com.facebook.flipper:flipper:$versions.flipper",
+        flipperNetwork       : "com.facebook.flipper:flipper-network-plugin:$versions.flipper",
+        flipperNoop          : "com.facebook.flipper:flipper-noop:$versions.flipper",
+        soloader             : "com.facebook.soloader:soloader:$versions.soloader",
 ]
