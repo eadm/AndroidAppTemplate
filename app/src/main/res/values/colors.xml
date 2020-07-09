@@ -14,8 +14,14 @@
     <color name="color_on_primary">@color/white</color>
     <color name="color_on_secondary">@color/white</color>
     <color name="color_on_background">@color/black</color>
+
     <color name="color_on_surface">@color/black</color>
+    <color name="color_on_surface_emphasis_medium">#99000000</color>
+
     <color name="color_on_error">@color/white</color>
+
+    <color name="color_status_bar">@color/color_primary</color>
+    <color name="color_control_normal">@color/color_on_surface_emphasis_medium</color> <!-- Non selector color for SKD < 23 -->
 
     <!-- Color palette -->
     <color name="color_brown_700">#535366</color>

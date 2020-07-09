@@ -17,7 +17,7 @@
         android:fullBackupContent="@xml/backup_descriptor"
         tools:targetApi="m">
         <activity
-            android:name="ru.nobird.template.view.main.ui.activity.MainActivity"
+            android:name=".view.main.ui.activity.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">

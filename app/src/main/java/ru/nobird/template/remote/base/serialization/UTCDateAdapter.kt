@@ -36,7 +36,7 @@ class UTCDateAdapter : JsonSerializer<Date>, JsonDeserializer<Date> {
             JsonPrimitive(serializeDateFormat.format(date))
         }
 
-    override fun deserialize(jsonElement: JsonElement, typeOfT: Type?, context: JsonDeserializationContext?): Date =
+    override fun deserialize(jsonElement: JsonElement, typeOfT: Type?, context: JsonDeserializationContext?): Date? =
         try {
             synchronized(deserializeDateFormat) {
                 deserializeDateFormat.parse(jsonElement.asString.take(UTC_ISO_FORMAT_SIMPLE_LENGTH))
