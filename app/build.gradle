@@ -43,6 +43,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro', 'proguard-rules-debug.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 androidExtensions {
@@ -109,6 +114,15 @@ dependencies {
     testImplementation libraries.robolectric
     testImplementation libraries.mockitoCore
     testImplementation libraries.mockitoKt
+
+    /**
+     * Flipper
+     */
+    debugImplementation libraries.soloader
+    debugImplementation libraries.flipperCore
+    debugImplementation libraries.flipperNetwork
+
+    releaseImplementation libraries.flipperNoop
 }
 
 apply plugin: 'com.getkeepsafe.dexcount'

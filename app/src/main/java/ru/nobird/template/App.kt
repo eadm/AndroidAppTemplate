@@ -2,6 +2,7 @@ package ru.nobird.template
 
 import android.app.Application
 import ru.nobird.android.view.base.ui.extension.isMainProcess
+import ru.nobird.template.view.debug.DebugTools
 import ru.nobird.template.view.injection.app.AppComponent
 import ru.nobird.template.view.injection.app.ComponentManager
 import ru.nobird.template.view.injection.app.DaggerAppComponent
@@ -25,7 +26,7 @@ class App : Application() {
         super.onCreate()
         if (!isMainProcess) return
 
-//        StethoHelper.initStetho(this)
+        DebugTools.initDebugTools(this)
 
         application = this
         component = DaggerAppComponent.builder()
