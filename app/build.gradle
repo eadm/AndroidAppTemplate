@@ -99,9 +99,6 @@ dependencies {
     implementation libraries.glide
     implementation libraries.glideTransformations
 
-    debugImplementation libraries.stetho
-    debugImplementation libraries.stethoOkHttp
-
     /*--Room--*/
     implementation libraries.roomRuntime
     implementation libraries.roomRx
