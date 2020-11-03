@@ -48,6 +48,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 androidExtensions {
@@ -73,6 +77,8 @@ dependencies {
     implementation libraries.constraintLayout
     implementation libraries.material
     implementation libraries.flexbox
+    implementation libraries.fragment
+    implementation libraries.fragmentKtx
 
     implementation libraries.domainRx
     implementation libraries.presentationBase
@@ -91,10 +97,10 @@ dependencies {
     implementation libraries.archExtensions
     implementation libraries.archViewModel
 
-    implementation libraries.gson
     implementation libraries.retrofit
-    implementation libraries.retrofitGsonConverter
     implementation libraries.retrofitRxJavaAdapter
+    implementation libraries.kotlinSerialization
+    implementation libraries.kotlinSerializationAdapter
 
     implementation libraries.glide
     implementation libraries.glideTransformations

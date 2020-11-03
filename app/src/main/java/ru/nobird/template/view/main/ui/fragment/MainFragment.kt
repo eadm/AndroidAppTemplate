@@ -2,8 +2,8 @@ package ru.nobird.template.view.main.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import ru.nobird.template.App
 import ru.nobird.template.R
 import ru.nobird.template.presentation.main.MainPresenter
@@ -19,13 +19,11 @@ class MainFragment : Fragment(R.layout.fragment_main), MainView {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var mainPresenter: MainPresenter
+    private val mainPresenter: MainPresenter by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectComponent()
-
-        mainPresenter = ViewModelProviders.of(this, viewModelFactory).get(MainPresenter::class.java)
     }
 
     private fun injectComponent() {

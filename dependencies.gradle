@@ -29,12 +29,13 @@ ext.versions = [
         calendarView        : '0.2.8',
         panoramaView        : '1.0',
         permissionDispatcher: '4.3.1',
+        fragment            : '1.2.5',
 
         presentationBase    : '1.1.1',
         domainRx            : '1.0.1',
         adapterDelegates    : '1.0.1',
         adapters            : '1.0.1',
-        viewUI              : '1.0.6',
+        viewUI              : '1.0.8',
         viewNavigation      : '1.0.2',
         viewInjection       : '1.0.1',
         model               : '1.0.4',
@@ -43,8 +44,10 @@ ext.versions = [
 
         kotpref             : '2.9.2',
 
-        retrofit            : '2.5.0',
-        gson                : '2.8.5',
+        retrofit            : '2.9.0',
+        kotlinSerialization : '1.0.1',
+        kotlinSerializationAdapter
+                            : '0.8.0',
 
         glide               : '4.11.0',
         glideTransformations: '4.3.0',
@@ -57,16 +60,18 @@ ext.versions = [
         ktlint              : '0.37.1',
         ktlintRules         : '1.0.0',
 
-        room                 : '2.2.1',
+        room                : '2.2.1',
 
-        flipper              : '0.49.0',
-        soloader             : '0.9.0',
+        flipper             : '0.49.0',
+        soloader            : '0.9.0',
 ]
 
 ext.gradlePlugins = [
         kotlin  : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
         android : "com.android.tools.build:gradle:$versions.androidGradlePlugin",
-        dexcount: "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$versions.dexcount"
+        dexcount: "com.getkeepsafe.dexcount:dexcount-gradle-plugin:$versions.dexcount",
+        kotlinSerizalizationPlugin
+                : "org.jetbrains.kotlin:kotlin-serialization:$versions.kotlin",
 ]
 
 ext.libraries = [
@@ -87,7 +92,8 @@ ext.libraries = [
         constraintLayout     : "androidx.constraintlayout:constraintlayout:$versions.constraintLayout",
         material             : "com.google.android.material:material:$versions.material",
         flexbox              : "com.google.android:flexbox:$versions.flexbox",
-
+        fragment             : "androidx.fragment:fragment:$versions.fragment",
+        fragmentKtx          : "androidx.fragment:fragment-ktx:$versions.fragment",
 
         presentationBase     : "ru.nobird.android.presentation:base:$versions.presentationBase",
         domainRx             : "ru.nobird.android.domain:rx:$versions.domainRx",
@@ -111,9 +117,11 @@ ext.libraries = [
         archViewModel        : "androidx.lifecycle:lifecycle-viewmodel:$versions.archComponents",
 
         retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
         retrofitRxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
-        gson                 : "com.google.code.gson:gson:$versions.gson",
+
+        kotlinSerialization  : "org.jetbrains.kotlinx:kotlinx-serialization-json:$versions.kotlinSerialization",
+        kotlinSerializationAdapter
+                             : "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:$versions.kotlinSerializationAdapter",
 
         glide                : "com.github.bumptech.glide:glide:$versions.glide",
         glideTransformations : "jp.wasabeef:glide-transformations:$versions.glideTransformations",
