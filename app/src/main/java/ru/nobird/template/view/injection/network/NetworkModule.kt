@@ -1,17 +1,17 @@
 package ru.nobird.template.view.injection.network
 
-import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
+import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
+import okhttp3.MediaType
 import okhttp3.OkHttpClient
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import ru.nobird.template.remote.base.model.Config
-import ru.nobird.template.remote.base.serialization.UTCDateAdapter
 import ru.nobird.template.view.injection.qualifiers.DebugInterceptors
-import java.util.Date
 
 @Module(includes = [NetworkUtilModule::class])
 abstract class NetworkModule {
@@ -22,8 +22,8 @@ abstract class NetworkModule {
         fun provideRetrofit(
             config: Config,
             @DebugInterceptors
-            debugInterceptors: List<@JvmSuppressWildcards Interceptor>,
-            gsonConverterFactory: GsonConverterFactory
+            debugInterceptors: Set<@JvmSuppressWildcards Interceptor>,
+            jsonConverterFactory: Converter.Factory
         ): Retrofit {
             val okHttpBuilder = OkHttpClient.Builder()
             debugInterceptors.forEach { okHttpBuilder.addNetworkInterceptor(it) }
@@ -31,17 +31,15 @@ abstract class NetworkModule {
             return Retrofit.Builder()
                 .baseUrl(config.baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(gsonConverterFactory)
+                .addConverterFactory(jsonConverterFactory)
                 .client(okHttpBuilder.build())
                 .build()
         }
 
         @Provides
         @JvmStatic
-        fun provideJsonFactory(): GsonConverterFactory =
-            GsonBuilder()
-                .registerTypeAdapter(Date::class.java, UTCDateAdapter())
-                .create()
-                .let(GsonConverterFactory::create)
+        fun provideJsonFactory(): Converter.Factory =
+            Json { coerceInputValues = true } // todo add UTCAdapter
+                .asConverterFactory(MediaType.get("application/json"))
     }
 }

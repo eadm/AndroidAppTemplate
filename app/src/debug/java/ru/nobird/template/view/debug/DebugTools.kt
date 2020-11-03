@@ -31,8 +31,8 @@ object DebugTools {
         }
     }
 
-    fun getDebugInterceptors(): List<Interceptor> =
-        listOf(
+    fun getDebugInterceptors(): Set<Interceptor> =
+        setOf(
             FlipperOkhttpInterceptor(networkPlugin)
         )
 }

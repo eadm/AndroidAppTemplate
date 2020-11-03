@@ -8,6 +8,6 @@ object DebugTools {
         // no op
     }
 
-    fun getDebugInterceptors(): List<Interceptor> =
-        emptyList()
+    fun getDebugInterceptors(): Set<Interceptor> =
+        emptySet()
 }
