@@ -45,6 +45,7 @@ abstract class NetworkModule {
         fun provideJson(): Json =
             Json {
                 coerceInputValues = true
+                ignoreUnknownKeys = true
                 serializersModule = SerializersModule {
                     contextual(UTCDateSerializer())
                 }
