@@ -1,8 +1,10 @@
 package ru.nobird.template.remote.sample.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class SampleResponse(
-    @SerializedName("sample")
+    @SerialName("sample")
     val sampleVal: String
 )
