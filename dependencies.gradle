@@ -61,6 +61,8 @@ ext.versions = [
         ktlintRules         : '1.0.0',
 
         room                : '2.2.1',
+        security            : '1.1.0-alpha03',
+        sqlcipher           : '4.4.0',
 
         flipper             : '0.49.0',
         soloader            : '0.9.0',
@@ -95,14 +97,19 @@ ext.libraries = [
         fragment             : "androidx.fragment:fragment:$versions.fragment",
         fragmentKtx          : "androidx.fragment:fragment-ktx:$versions.fragment",
 
-        presentationBase     : "ru.nobird.android.presentation:base:$versions.presentationBase",
-        domainRx             : "ru.nobird.android.domain:rx:$versions.domainRx",
-        adapterDelegates     : "ru.nobird.android.ui:AdapterDelegates:$versions.adapterDelegates",
-        adapters             : "ru.nobird.android.ui:Adapters:$versions.adapters",
-        viewUI               : "ru.nobird.android.view:ui:$versions.viewUI",
-        viewNavigation       : "ru.nobird.android.view:navigation:$versions.viewNavigation",
-        viewInjection        : "ru.nobird.android.view:injection:$versions.viewInjection",
-        model                : "ru.nobird.android.core:model:$versions.model",
+        androidKit           : [
+                presentationBase     : "ru.nobird.android.presentation:base:$versions.presentationBase",
+                adapterDelegates     : "ru.nobird.android.ui:AdapterDelegates:$versions.adapterDelegates",
+                adapters             : "ru.nobird.android.ui:Adapters:$versions.adapters",
+                domainRx             : "ru.nobird.android.domain:rx:$versions.domainRx",
+                presentationRedux    : "ru.nobird.android.presentation:redux:$versions.presentationRedux",
+                presentationReduxRx  : "ru.nobird.android.presentation:redux-rx:$versions.presentationRedux",
+                viewUI               : "ru.nobird.android.view:ui:$versions.viewUI",
+                viewRedux            : "ru.nobird.android.view:redux:$versions.viewRedux",
+                viewNavigation       : "ru.nobird.android.view:navigation:$versions.viewNavigation",
+                viewInjection        : "ru.nobird.android.view:injection:$versions.viewInjection",
+                model                : "ru.nobird.android.core:model:$versions.model",
+        ],
 
         permissionDispatcher : "org.permissionsdispatcher:permissionsdispatcher:$versions.permissionDispatcher",
         permissionDispatcherProcessor
@@ -134,12 +141,16 @@ ext.libraries = [
         ktlint               : "com.pinterest:ktlint:$versions.ktlint",
         ktlintRules          : "ru.nobird.android.ktlint:rules:$versions.ktlintRules",
 
+        security             : "androidx.security:security-crypto:$versions.security",
+        sqlcipher            : "net.zetetic:android-database-sqlcipher:$versions.sqlcipher",
+
         roomRuntime           : "androidx.room:room-runtime:$versions.room",
         roomCompiler          : "androidx.room:room-compiler:$versions.room",
         roomRx                : "androidx.room:room-rxjava2:$versions.room",
 
-        flipperCore          : "com.facebook.flipper:flipper:$versions.flipper",
-        flipperNetwork       : "com.facebook.flipper:flipper-network-plugin:$versions.flipper",
-        flipperNoop          : "com.facebook.flipper:flipper-noop:$versions.flipper",
-        soloader             : "com.facebook.soloader:soloader:$versions.soloader",
+        flipperDebug         : [
+                "com.facebook.flipper:flipper:$versions.flipper",
+                "com.facebook.flipper:flipper-network-plugin:$versions.flipper",
+                "com.facebook.soloader:soloader:$versions.soloader"
+        ]
 ]

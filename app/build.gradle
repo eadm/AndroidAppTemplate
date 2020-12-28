@@ -81,14 +81,7 @@ dependencies {
     implementation libraries.fragment
     implementation libraries.fragmentKtx
 
-    implementation libraries.domainRx
-    implementation libraries.presentationBase
-    implementation libraries.adapterDelegates
-    implementation libraries.adapters
-    implementation libraries.viewUI
-    implementation libraries.viewInjection
-    implementation libraries.viewNavigation
-    implementation libraries.model
+    implementation libraries.androidKit.values()
 
 //    implementation libraries.permissionDispatcher
 //    kapt libraries.permissionDispatcherProcessor
@@ -111,19 +104,15 @@ dependencies {
     implementation libraries.roomRx
     kapt libraries.roomCompiler
 
+    implementation libraries.security
+    implementation libraries.sqlcipher
+
     testImplementation libraries.junit
     testImplementation libraries.robolectric
     testImplementation libraries.mockitoCore
     testImplementation libraries.mockitoKt
 
-    /**
-     * Flipper
-     */
-    debugImplementation libraries.soloader
-    debugImplementation libraries.flipperCore
-    debugImplementation libraries.flipperNetwork
-
-    releaseImplementation libraries.flipperNoop
+    debugImplementation libraries.flipperDebug
 }
 
 apply plugin: 'com.getkeepsafe.dexcount'
