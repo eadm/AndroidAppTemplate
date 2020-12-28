@@ -1,12 +1,14 @@
 package ru.nobird.template.view.main.ui.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import ru.nobird.android.presentation.redux.container.ReduxView
 import ru.nobird.android.view.redux.ui.extension.reduxViewModel
 import ru.nobird.template.App
 import ru.nobird.template.R
+import ru.nobird.template.databinding.FragmentMainBinding
 import ru.nobird.template.presentation.main.MainFeature
 import ru.nobird.template.view.main.viewmodel.MainViewModel
 import javax.inject.Inject
@@ -25,6 +27,8 @@ class MainFragment :
 
     private val mainViewModel: MainViewModel by reduxViewModel(this) { viewModelFactory }
 
+    private var fragmentMainBinding: FragmentMainBinding? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectComponent()
@@ -38,11 +42,21 @@ class MainFragment :
             .inject(this)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        fragmentMainBinding = FragmentMainBinding.bind(view)
+        fragmentMainBinding?.textView?.text = "Hello"
+    }
+
     override fun render(state: MainFeature.State) {
         // no op
     }
 
     override fun onAction(action: MainFeature.Action.ViewAction) {
         // no op
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        fragmentMainBinding = null
     }
 }
