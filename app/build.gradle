@@ -80,6 +80,7 @@ dependencies {
     implementation libraries.flexbox
     implementation libraries.fragment
     implementation libraries.fragmentKtx
+    implementation libraries.viewBindingDelegate
 
     implementation libraries.androidKit.values()
 

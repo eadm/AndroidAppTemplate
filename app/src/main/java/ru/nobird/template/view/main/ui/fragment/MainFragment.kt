@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import by.kirich1409.viewbindingdelegate.viewBinding
 import ru.nobird.android.presentation.redux.container.ReduxView
 import ru.nobird.android.view.redux.ui.extension.reduxViewModel
 import ru.nobird.template.App
@@ -27,7 +28,7 @@ class MainFragment :
 
     private val mainViewModel: MainViewModel by reduxViewModel(this) { viewModelFactory }
 
-    private var fragmentMainBinding: FragmentMainBinding? = null
+    private val fragmentMainBinding by viewBinding(FragmentMainBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +44,7 @@ class MainFragment :
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        fragmentMainBinding = FragmentMainBinding.bind(view)
-        fragmentMainBinding?.textView?.text = "Hello"
+        fragmentMainBinding.textView.setText(R.string.app_name)
     }
 
     override fun render(state: MainFeature.State) {
@@ -53,10 +53,5 @@ class MainFragment :
 
     override fun onAction(action: MainFeature.Action.ViewAction) {
         // no op
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        fragmentMainBinding = null
     }
 }
