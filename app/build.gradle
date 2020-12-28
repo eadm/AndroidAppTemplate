@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlinx-serialization'
 apply from: '../code_quality_tools/ktlint.gradle'
 
@@ -53,10 +53,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
-
-androidExtensions {
-    experimental = true
 }
 
 dependencies {
