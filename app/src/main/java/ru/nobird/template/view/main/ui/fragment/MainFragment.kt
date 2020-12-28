@@ -2,15 +2,19 @@ package ru.nobird.template.view.main.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import ru.nobird.android.presentation.redux.container.ReduxView
+import ru.nobird.android.view.redux.ui.extension.reduxViewModel
 import ru.nobird.template.App
 import ru.nobird.template.R
-import ru.nobird.template.presentation.main.MainPresenter
-import ru.nobird.template.presentation.main.MainView
+import ru.nobird.template.presentation.main.MainFeature
+import ru.nobird.template.view.main.viewmodel.MainViewModel
 import javax.inject.Inject
 
-class MainFragment : Fragment(R.layout.fragment_main), MainView {
+class MainFragment :
+    Fragment(R.layout.fragment_main),
+    ReduxView<MainFeature.State, MainFeature.Action.ViewAction> {
+
     companion object {
         fun newInstance(): Fragment =
             MainFragment()
@@ -19,11 +23,12 @@ class MainFragment : Fragment(R.layout.fragment_main), MainView {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val mainPresenter: MainPresenter by viewModels { viewModelFactory }
+    private val mainViewModel: MainViewModel by reduxViewModel(this) { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectComponent()
+        mainViewModel.onNewMessage(MainFeature.Message.Init)
     }
 
     private fun injectComponent() {
@@ -33,13 +38,11 @@ class MainFragment : Fragment(R.layout.fragment_main), MainView {
             .inject(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-        mainPresenter.attachView(this)
+    override fun render(state: MainFeature.State) {
+        // no op
     }
 
-    override fun onStop() {
-        mainPresenter.detachView(this)
-        super.onStop()
+    override fun onAction(action: MainFeature.Action.ViewAction) {
+        // no op
     }
 }
