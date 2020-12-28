@@ -38,11 +38,11 @@
 }
 
 # Change here com.yourcompany.yourpackage
--keep,includedescriptorclasses class com.yourcompany.yourpackage.**$$serializer { *; } # <-- change package name to your app's
--keepclassmembers class com.yourcompany.yourpackage.** { # <-- change package name to your app's
+-keep,includedescriptorclasses class ru.nobird.template.**$$serializer { *; } # <-- change package name to your app's
+-keepclassmembers class ru.nobird.template.** { # <-- change package name to your app's
     *** Companion;
 }
--keepclasseswithmembers class com.yourcompany.yourpackage.** { # <-- change package name to your app's
+-keepclasseswithmembers class ru.nobird.template.** { # <-- change package name to your app's
     kotlinx.serialization.KSerializer serializer(...);
 }
 ##---End: Kotlin Serialization---
@@ -83,3 +83,6 @@
 
 -keep class com.facebook.jni.** { *; }
 -keep class com.facebook.flipper.** { *; }
+
+-keep,includedescriptorclasses class net.sqlcipher.** { *; }
+-keep,includedescriptorclasses interface net.sqlcipher.** { *; }
