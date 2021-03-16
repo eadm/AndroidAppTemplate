@@ -1,8 +1,5 @@
 package ru.nobird.template.cache.sample
 
-import io.reactivex.Completable
-import io.reactivex.Maybe
-import io.reactivex.Single
 import ru.nobird.template.cache.sample.dao.SampleDao
 import ru.nobird.template.cache.sample.mapper.SampleDbMapper
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
@@ -16,20 +13,20 @@ constructor(
     private val sampleDao: SampleDao,
     private val mapper: SampleDbMapper
 ) : SampleCacheDataSource {
-    override fun getSampleVal(): Maybe<String> =
-        Maybe.fromCallable { sampleStorage.sampleVal }
+    override suspend fun getSampleVal(): String? =
+        sampleStorage.sampleVal
 
-    override fun saveSampleVal(sampleVal: String): Completable =
-        Completable.fromAction {
-            sampleStorage.sampleVal = sampleVal
-        }
+    override suspend fun saveSampleVal(sampleVal: String) {
+        sampleStorage.sampleVal = sampleVal
+    }
 
-    override fun saveSampleEntries(data: List<SampleEntry>): Completable =
+    override suspend fun saveSampleEntries(data: List<SampleEntry>) {
         sampleDao.save(data.map(mapper::toDb))
+    }
 
-    override fun getSampleEntries(): Single<List<SampleEntry>> =
+    override suspend fun getSampleEntries(): List<SampleEntry> =
         sampleDao.getAll().map(mapper::fromDb)
 
-    override fun getSampleEntry(id: Long): Single<SampleEntry> =
-        sampleDao.getById(id).map(mapper::fromDb)
+    override suspend fun getSampleEntry(id: Long): SampleEntry =
+        mapper.fromDb(sampleDao.getById(id))
 }

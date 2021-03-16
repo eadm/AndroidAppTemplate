@@ -1,7 +1,7 @@
 package ru.nobird.template.data.sample.source
 
-import io.reactivex.Single
+import ru.nobird.template.domain.base.RemoteResult
 
 interface SampleRemoteDataSource {
-    fun getSampleVal(): Single<String>
+    suspend fun getSampleVal(): RemoteResult<String>
 }

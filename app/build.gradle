@@ -66,10 +66,6 @@ dependencies {
     implementation libraries.dagger
     kapt libraries.daggerCompiler
 
-    implementation libraries.rxAndroid
-    implementation libraries.rxJava2
-    implementation libraries.rxKotlin
-
     implementation libraries.appCompat
     implementation libraries.ktx
     implementation libraries.recyclerview
@@ -93,7 +89,6 @@ dependencies {
     implementation libraries.archViewModel
 
     implementation libraries.retrofit
-    implementation libraries.retrofitRxJavaAdapter
     implementation libraries.kotlinSerialization
     implementation libraries.kotlinSerializationAdapter
 
@@ -102,7 +97,7 @@ dependencies {
 
     /*--Room--*/
     implementation libraries.roomRuntime
-    implementation libraries.roomRx
+    implementation libraries.roomKtx
     kapt libraries.roomCompiler
 
     implementation libraries.security
