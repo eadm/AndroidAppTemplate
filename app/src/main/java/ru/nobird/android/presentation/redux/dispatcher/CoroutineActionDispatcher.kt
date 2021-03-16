@@ -5,7 +5,7 @@ import kotlinx.coroutines.launch
 
 @Suppress("unused")
 abstract class CoroutineActionDispatcher<Action, Message>(
-        coroutineScopeConfig: ScopeConfig
+    coroutineScopeConfig: ScopeConfig
 ) : ActionDispatcher<Action, Message> {
 
     protected val actionScope: CoroutineScope = coroutineScopeConfig.actionScope
@@ -40,7 +40,7 @@ abstract class CoroutineActionDispatcher<Action, Message>(
 
     override fun cancel() {
         cancelled = true
-        //coroutineScope.cancel() -- do we really need to cancel the scope? Probably not.
+        // coroutineScope.cancel() -- do we really need to cancel the scope? Probably not.
         messageListener = null
     }
 

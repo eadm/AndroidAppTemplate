@@ -28,14 +28,14 @@ constructor(
                     is RemoteResult.Failure -> {
                         when (remoteResult.subtype) {
                             RemoteResult.Failure.Subtype.NO_CONNECTION,
-                                RemoteResult.Failure.Subtype.TEMPORARY_CONNECTIVITY_ERROR,
-                                RemoteResult.Failure.Subtype.INVALID_SERVER_RESPONSE -> {
-                                    cacheDataSource.getSampleVal()?.let { RemoteResult.Data(it) }
-                                        ?: remoteResult
-                                }
+                            RemoteResult.Failure.Subtype.TEMPORARY_CONNECTIVITY_ERROR,
+                            RemoteResult.Failure.Subtype.INVALID_SERVER_RESPONSE -> {
+                                cacheDataSource.getSampleVal()?.let { RemoteResult.Data(it) }
+                                    ?: remoteResult
+                            }
 
                             RemoteResult.Failure.Subtype.NOT_AUTHORIZED,
-                                RemoteResult.Failure.Subtype.REJECTED -> remoteResult
+                            RemoteResult.Failure.Subtype.REJECTED -> remoteResult
                         }
                     }
                 }

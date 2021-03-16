@@ -1,6 +1,6 @@
 package ru.nobird.template.presentation.main.base
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
 import ru.nobird.android.presentation.redux.dispatcher.CoroutineActionDispatcher
 
 class ActionDispatcherOptions(

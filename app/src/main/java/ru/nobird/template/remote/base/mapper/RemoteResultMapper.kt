@@ -12,7 +12,7 @@ interface RemoteResultMapper<DataType, MappedDataType> {
 
     /**
      * @return null when [data] is invalid (can't be mapped to output result)
-      */
+     */
     fun tryMapData(data: DataType): MappedDataType?
 
     fun mapToFailure(data: DataType): RemoteResult.Failure<MappedDataType> =

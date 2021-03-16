@@ -12,13 +12,13 @@ constructor(
     private val router: Router,
     private val sampleInteractor: SampleInteractor,
     config: ActionDispatcherOptions
-): CoroutineActionDispatcher<MainFeature.Action, MainFeature.Message>(config) {
+) : CoroutineActionDispatcher<MainFeature.Action, MainFeature.Message>(config) {
 
     override suspend fun doSuspendableAction(action: MainFeature.Action) {
         when (action) {
             is MainFeature.Action.FetchSampleVal -> {
                 val sampleValue = sampleInteractor.getSampleVal()
-                //onNewMessage(ValFetchSuccess(sampleValue))
+                // onNewMessage(ValFetchSuccess(sampleValue))
             }
         }
     }
