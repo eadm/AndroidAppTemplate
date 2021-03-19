@@ -11,9 +11,6 @@ import com.chibatching.kotpref.PreferencesOpener
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.plus
 import net.sqlcipher.database.SupportFactory
 import ru.nobird.android.view.injection.base.presentation.DaggerViewModelFactory
 import ru.nobird.template.BuildConfig
@@ -43,11 +40,7 @@ abstract class AppModule {
         @Provides
         @JvmStatic
         internal fun provideActionDispatcherOptions(): ActionDispatcherOptions =
-            ActionDispatcherOptions(
-                // Dispatchers.Main is a simplest (however not the very best) way to avoid concurrency
-                GlobalScope + Dispatchers.Main,
-                GlobalScope + Dispatchers.Main,
-            )
+            ActionDispatcherOptions()
 
         @Provides
         @ApplicationScope

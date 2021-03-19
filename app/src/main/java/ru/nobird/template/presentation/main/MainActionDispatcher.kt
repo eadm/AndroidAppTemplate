@@ -12,7 +12,7 @@ constructor(
     private val router: Router,
     private val sampleInteractor: SampleInteractor,
     config: ActionDispatcherOptions
-) : CoroutineActionDispatcher<MainFeature.Action, MainFeature.Message>(config) {
+) : CoroutineActionDispatcher<MainFeature.Action, MainFeature.Message>(config.createConfig()) {
 
     override suspend fun doSuspendableAction(action: MainFeature.Action) {
         when (action) {
