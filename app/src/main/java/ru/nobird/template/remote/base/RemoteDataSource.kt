@@ -15,6 +15,6 @@ open class RemoteDataSource {
         } catch (e: Exception) {
             // you can check troubles here
             // for example
-            RemoteResult.Failure(RemoteResult.Failure.Subtype.TEMPORARY_CONNECTIVITY_ERROR)
+            RemoteResult.Failure(RemoteResult.Failure.Subtype.CONNECTION_ERROR)
         }
 }

@@ -14,5 +14,7 @@ constructor(
 ) : RemoteDataSource(), SampleRemoteDataSource {
 
     override suspend fun getSampleVal(): RemoteResult<String> =
-        call(SampleResponseMapper, sampleService::getSampleVal)
+        call(SampleResponseMapper) {
+            sampleService.getSampleVal()
+        }
 }

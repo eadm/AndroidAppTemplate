@@ -16,5 +16,5 @@ interface RemoteResultMapper<DataType, MappedDataType> {
     fun tryMapData(data: DataType): MappedDataType?
 
     fun mapToFailure(data: DataType): RemoteResult.Failure<MappedDataType> =
-        RemoteResult.Failure(RemoteResult.Failure.Subtype.INVALID_SERVER_RESPONSE)
+        RemoteResult.Failure(RemoteResult.Failure.Subtype.INVALID_RESPONSE)
 }
