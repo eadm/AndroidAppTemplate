@@ -1,20 +1,16 @@
 package ru.nobird.template.remote.base
 
 import ru.nobird.template.domain.base.RemoteResult
-import ru.nobird.template.remote.base.mapper.RemoteResultMapper
 
 open class RemoteDataSource {
 
-    protected suspend fun <ServerDataType, ResultDataType> call(
-        mapper: RemoteResultMapper<ServerDataType, ResultDataType>,
-        remoteCall: suspend () -> ServerDataType
-    ): RemoteResult<ResultDataType> =
+    protected suspend fun <T> call(
+        remoteCall: suspend () -> T
+    ): RemoteResult<T> =
         try {
             val serverResult = remoteCall()
-            mapper.mapToRemoteResult(serverResult)
+            RemoteResult.Data(serverResult)
         } catch (e: Exception) {
-            // you can check troubles here
-            // for example
-            RemoteResult.Failure(RemoteResult.Failure.Subtype.CONNECTION_ERROR)
+            RemoteResult.Failure(e)
         }
 }
