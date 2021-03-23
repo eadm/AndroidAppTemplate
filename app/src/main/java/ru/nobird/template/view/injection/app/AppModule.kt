@@ -11,16 +11,13 @@ import com.chibatching.kotpref.PreferencesOpener
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import net.sqlcipher.database.SupportFactory
-import ru.nobird.android.view.injection.base.RxScheduler
 import ru.nobird.android.view.injection.base.presentation.DaggerViewModelFactory
 import ru.nobird.template.BuildConfig
 import ru.nobird.template.cache.base.Cryptographer
 import ru.nobird.template.cache.common.AppDatabase
 import ru.nobird.template.cache.common.RoomConstants
+import ru.nobird.template.presentation.main.base.ActionDispatcherOptions
 import ru.nobird.template.remote.base.model.Config
 import ru.nobird.template.view.injection.qualifiers.AppSharedPreferences
 import java.security.SecureRandom
@@ -42,15 +39,8 @@ abstract class AppModule {
 
         @Provides
         @JvmStatic
-        @RxScheduler.Main
-        internal fun provideAndroidScheduler(): Scheduler =
-            AndroidSchedulers.mainThread()
-
-        @Provides
-        @JvmStatic
-        @RxScheduler.Background
-        internal fun provideBackgroundScheduler(): Scheduler =
-            Schedulers.io()
+        internal fun provideActionDispatcherOptions(): ActionDispatcherOptions =
+            ActionDispatcherOptions()
 
         @Provides
         @ApplicationScope

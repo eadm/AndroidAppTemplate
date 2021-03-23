@@ -10,7 +10,6 @@ import okhttp3.Interceptor
 import okhttp3.MediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import ru.nobird.template.remote.base.model.Config
 import ru.nobird.template.remote.base.serialization.UTCDateSerializer
 import ru.nobird.template.view.injection.app.ApplicationScope
@@ -33,7 +32,6 @@ abstract class NetworkModule {
 
             return Retrofit.Builder()
                 .baseUrl(config.baseUrl)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(json.asConverterFactory(MediaType.get("application/json")))
                 .client(okHttpBuilder.build())
                 .build()

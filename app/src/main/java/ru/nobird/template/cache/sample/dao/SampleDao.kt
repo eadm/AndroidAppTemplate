@@ -4,8 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import io.reactivex.Completable
-import io.reactivex.Single
 import ru.nobird.template.cache.common.RoomConstants
 import ru.nobird.template.cache.sample.model.SampleDbEntry
 
@@ -16,13 +14,13 @@ import ru.nobird.template.cache.sample.model.SampleDbEntry
 @Dao
 interface SampleDao {
     @Query("SELECT * FROM ${RoomConstants.TABLE_SAMPLE}")
-    fun getAll(): Single<List<SampleDbEntry>>
+    suspend fun getAll(): List<SampleDbEntry>
 
     @Query("SELECT * FROM ${RoomConstants.TABLE_SAMPLE} where id = :id")
-    fun getById(id: Long): Single<SampleDbEntry>
+    suspend fun getById(id: Long): SampleDbEntry
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun save(data: List<SampleDbEntry>): Completable
+    suspend fun save(data: List<SampleDbEntry>)
 
     @Query("DELETE FROM ${RoomConstants.TABLE_SAMPLE}")
     fun clear()

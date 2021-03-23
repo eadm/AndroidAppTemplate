@@ -1,8 +1,5 @@
 package ru.nobird.template.data.sample.repository
 
-import io.reactivex.Completable
-import io.reactivex.Single
-import ru.nobird.android.domain.rx.doCompletableOnSuccess
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
 import ru.nobird.template.domain.base.DataSourceType
@@ -16,30 +13,31 @@ constructor(
     private val remoteDataSource: SampleRemoteDataSource,
     private val cacheDataSource: SampleCacheDataSource
 ) : SampleRepository {
-    override fun getSampleVal(primaryDataSource: DataSourceType): Single<String> {
-        val remoteSource = remoteDataSource
-            .getSampleVal()
-            .doCompletableOnSuccess(cacheDataSource::saveSampleVal)
 
-        val cacheSource = cacheDataSource.getSampleVal()
+    override suspend fun getSampleVal(primaryDataSource: DataSourceType): String =
+        when (primaryDataSource) {
+            DataSourceType.CACHE -> {
+                cacheDataSource.getSampleVal()
+                    ?: remoteDataSource.getSampleVal()
+            }
 
-        return when (primaryDataSource) {
-            DataSourceType.CACHE ->
-                cacheSource
-                    .switchIfEmpty(remoteSource)
-
-            DataSourceType.REMOTE ->
-                remoteSource
-                    .onErrorResumeNext(cacheSource.toSingle())
+            DataSourceType.REMOTE -> {
+                try {
+                    remoteDataSource.getSampleVal()
+                } catch (e: Exception) {
+                    cacheDataSource.getSampleVal()
+                        ?: throw e
+                }
+            }
         }
+
+    override suspend fun saveSampleEntries(data: List<SampleEntry>) {
+        cacheDataSource.saveSampleEntries(data)
     }
 
-    override fun saveSampleEntries(data: List<SampleEntry>): Completable =
-        cacheDataSource.saveSampleEntries(data)
-
-    override fun getSampleEntries(): Single<List<SampleEntry>> =
+    override suspend fun getSampleEntries(): List<SampleEntry> =
         cacheDataSource.getSampleEntries()
 
-    override fun getSampleEntry(id: Long): Single<SampleEntry> =
+    override suspend fun getSampleEntry(id: Long): SampleEntry? =
         cacheDataSource.getSampleEntry(id)
 }
