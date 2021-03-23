@@ -1,6 +1,5 @@
 package ru.nobird.template.domain.sample.interactor
 
-import ru.nobird.template.domain.base.RemoteResult
 import ru.nobird.template.domain.sample.model.SampleEntry
 import ru.nobird.template.domain.sample.repository.SampleRepository
 import javax.inject.Inject
@@ -10,7 +9,7 @@ class SampleInteractor
 constructor(
     private val sampleRepository: SampleRepository
 ) {
-    suspend fun getSampleVal(): RemoteResult<String> =
+    suspend fun getSampleVal(): String =
         sampleRepository.getSampleVal()
 
     suspend fun saveSampleEntries(data: List<SampleEntry>) {
