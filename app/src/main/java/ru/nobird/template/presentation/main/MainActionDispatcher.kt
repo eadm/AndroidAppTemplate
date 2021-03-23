@@ -17,8 +17,12 @@ constructor(
     override suspend fun doSuspendableAction(action: MainFeature.Action) {
         when (action) {
             is MainFeature.Action.FetchSampleVal -> {
-                val sampleValue = sampleInteractor.getSampleVal()
-                // onNewMessage(ValFetchSuccess(sampleValue))
+                val sampleValue = try {
+                    val sampleValue = sampleInteractor.getSampleVal()
+                    // onNewMessage(FetchSampleValSuccess(sampleValue))
+                } catch (e: Exception) {
+                    // onNewMessage(FetchSampleValFailed(e))
+                }
             }
         }
     }
