@@ -69,7 +69,6 @@ dependencies {
     implementation libraries.appCompat
     implementation libraries.ktx
     implementation libraries.recyclerview
-    implementation libraries.cardView
     implementation libraries.viewPager
     implementation libraries.constraintLayout
     implementation libraries.material

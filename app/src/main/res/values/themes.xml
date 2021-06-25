@@ -74,6 +74,7 @@
         <item name="cornerRadius">@dimen/corner_radius</item>
 
         <item name="isNightMode">@bool/is_night_mode</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
 
         <item name="selectableItemBackgroundRounded">@drawable/selectable_item_rounded_background</item>
     </style>
