@@ -28,15 +28,15 @@ ext.versions = [
         fragment            : '1.3.5',
         viewBindingDelegate : '1.3.1',
 
-        adapterDelegates    : '1.0.1',
-        adapters            : '1.0.1',
+        adapterDelegates    : '1.1.0',
+        adapters            : '1.1.0',
         presentationRedux   : '1.1.0',
         presentationReduxCoroutines : '1.2.0',
-        viewUI              : '1.0.9',
+        viewUI              : '1.0.11',
         viewRedux           : '1.0.8',
         viewNavigation      : '1.0.2',
         viewInjection       : '1.0.1',
-        model               : '1.0.4',
+        model               : '1.0.6',
 
         cicerone            : '5.0.0',
 
@@ -93,8 +93,8 @@ ext.libraries = [
         viewBindingDelegate  : "com.kirich1409.viewbindingpropertydelegate:vbpd-noreflection:$versions.viewBindingDelegate",
 
         androidKit           : [
-                adapterDelegates     : "ru.nobird.android.ui:AdapterDelegates:$versions.adapterDelegates",
-                adapters             : "ru.nobird.android.ui:Adapters:$versions.adapters",
+                adapterDelegates     : "ru.nobird.android.ui:adapter-delegates:$versions.adapterDelegates",
+                adapters             : "ru.nobird.android.ui:adapters:$versions.adapters",
                 presentationRedux    : "ru.nobird.android.presentation:redux:$versions.presentationRedux",
                 presentationReduxCoroutines : "ru.nobird.android.presentation:redux-coroutines:$versions.presentationReduxCoroutines",
                 viewUI               : "ru.nobird.android.view:ui:$versions.viewUI",
