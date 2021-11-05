@@ -20,6 +20,6 @@ jobs:
           java-version: 11
 
       - name: Run ktlint
-        run: bash ./gradlew ktlint --stacktrace
+        run: bash ./gradlew app:ktlintCheck --stacktrace
         env:
           GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.KIT_PACKAGES_TOKEN }}
