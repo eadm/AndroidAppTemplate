@@ -1,9 +1,9 @@
 package ru.nobird.template.presentation.main
 
+import com.github.terrakok.cicerone.Router
 import ru.nobird.android.presentation.redux.dispatcher.CoroutineActionDispatcher
 import ru.nobird.template.domain.sample.interactor.SampleInteractor
 import ru.nobird.template.presentation.main.base.ActionDispatcherOptions
-import ru.terrakok.cicerone.Router
 import javax.inject.Inject
 
 class MainActionDispatcher
