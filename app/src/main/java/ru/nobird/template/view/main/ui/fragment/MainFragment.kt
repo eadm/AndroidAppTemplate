@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
+import javax.inject.Inject
 import ru.nobird.android.presentation.redux.container.ReduxView
 import ru.nobird.android.view.redux.ui.extension.reduxViewModel
 import ru.nobird.template.App
@@ -12,7 +13,6 @@ import ru.nobird.template.R
 import ru.nobird.template.databinding.FragmentMainBinding
 import ru.nobird.template.presentation.main.MainFeature
 import ru.nobird.template.view.main.viewmodel.MainViewModel
-import javax.inject.Inject
 
 class MainFragment :
     Fragment(R.layout.fragment_main),

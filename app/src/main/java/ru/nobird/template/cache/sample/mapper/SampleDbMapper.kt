@@ -1,8 +1,8 @@
 package ru.nobird.template.cache.sample.mapper
 
+import javax.inject.Inject
 import ru.nobird.template.cache.sample.model.SampleDbEntry
 import ru.nobird.template.domain.sample.model.SampleEntry
-import javax.inject.Inject
 
 /**
  * Created by Alexander Kolpakov (jquickapp@gmail.com) on 08-Jul-20

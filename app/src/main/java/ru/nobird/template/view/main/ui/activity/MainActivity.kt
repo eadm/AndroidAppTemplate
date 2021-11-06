@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import javax.inject.Inject
 import ru.nobird.android.view.navigation.ui.listener.BackButtonListener
 import ru.nobird.android.view.navigation.ui.listener.BackNavigable
 import ru.nobird.template.App
 import ru.nobird.template.R
 import ru.nobird.template.view.main.navigation.screen.MainScreen
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), BackNavigable {
 

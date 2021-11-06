@@ -1,8 +1,8 @@
 package ru.nobird.template.remote.sample
 
+import javax.inject.Inject
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
 import ru.nobird.template.remote.sample.service.SampleService
-import javax.inject.Inject
 
 class SampleRemoteDataSourceImpl
 @Inject
