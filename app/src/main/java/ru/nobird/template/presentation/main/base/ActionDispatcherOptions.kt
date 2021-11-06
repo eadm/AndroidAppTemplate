@@ -14,12 +14,22 @@ class ActionDispatcherOptions(
     override val messageParentScope: CoroutineScope? = null
 ) : CoroutineActionDispatcher.ScopeConfigOptions {
 
-    override val actionScopeExceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("ActionScopeException", "ActionDispatcher: exception on action scope", throwable)
-    }
+    override val actionScopeExceptionHandler: CoroutineExceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            Log.e(
+                "ActionScopeException",
+                "ActionDispatcher: exception on action scope",
+                throwable
+            )
+        }
 
-    override val messageScopeExceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("MessageScopeException", "ActionDispatcher: exception on message scope", throwable)
-        throw throwable // rethrow
-    }
+    override val messageScopeExceptionHandler: CoroutineExceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            Log.e(
+                "MessageScopeException",
+                "ActionDispatcher: exception on message scope",
+                throwable
+            )
+            throw throwable // rethrow
+        }
 }
