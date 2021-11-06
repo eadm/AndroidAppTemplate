@@ -131,4 +131,10 @@ ktlint {
     disabledRules.set(listOf("package-name"))
 }
 
+tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
+    rejectVersionIf {
+        !isStableVersion(candidate.version)
+    }
+}
+
 apply(plugin = "com.getkeepsafe.dexcount")
