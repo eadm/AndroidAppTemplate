@@ -62,6 +62,7 @@ plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.
 plugin-kotlinSerialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 plugin-android = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 plugin-dexcount = { module = "com.getkeepsafe.dexcount:dexcount-gradle-plugin", version.ref = "dexcount" }
+plugin-ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version = "10.2.0" }
 
 kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinPlg = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }

@@ -4,17 +4,21 @@ buildscript {
         jcenter()
         google()
         mavenLocal()
-
+        maven("https://plugins.gradle.org/m2/")
     }
     dependencies {
         classpath(libs.plugin.kotlin)
         classpath(libs.plugin.kotlinSerialization)
         classpath(libs.plugin.android)
         classpath(libs.plugin.dexcount)
-//        classpath gradlePlugins.kotlinSerizalizationPlugin
+        classpath(libs.plugin.ktlint)
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+}
+
+subprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 }
 
 allprojects {
