@@ -13,6 +13,7 @@ This project is starting point for android development. It will help you to skip
 - Flipper debugger
 - CI (Ktlint check with GitHub actions)
 - PR templates
+- [AndroidKit](https://github.com/eadm/AndroidKit) libraries
 
 ## Architecture
 
