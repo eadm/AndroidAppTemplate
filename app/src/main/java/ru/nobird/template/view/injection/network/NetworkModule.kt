@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.contextual
 import okhttp3.Interceptor
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import ru.nobird.template.remote.base.model.Config
@@ -32,7 +32,7 @@ abstract class NetworkModule {
 
             return Retrofit.Builder()
                 .baseUrl(config.baseUrl)
-                .addConverterFactory(json.asConverterFactory(MediaType.get("application/json")))
+                .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
                 .client(okHttpBuilder.build())
                 .build()
         }

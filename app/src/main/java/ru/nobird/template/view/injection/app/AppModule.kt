@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.room.Room
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
-import com.chibatching.kotpref.PreferencesOpener
+import com.chibatching.kotpref.PreferencesProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -85,31 +85,26 @@ abstract class AppModule {
         @ApplicationScope
         internal fun provideSharedPreferences(
             context: Context,
-            preferencesOpener: PreferencesOpener
+            preferencesOpener: PreferencesProvider
         ): SharedPreferences =
-            preferencesOpener.openPreferences(context, "app_preferences", Context.MODE_PRIVATE)
+            preferencesOpener.get(context, "app_preferences", Context.MODE_PRIVATE)
 
         @Provides
         @JvmStatic
         @ApplicationScope
-        internal fun provideSharedPreferenceOpener(): PreferencesOpener =
-            object : PreferencesOpener {
-                override fun openPreferences(
-                    context: Context,
-                    name: String,
-                    mode: Int
-                ): SharedPreferences =
-                    if (BuildConfig.DEBUG) {
-                        context.getSharedPreferences(name, Context.MODE_PRIVATE)
-                    } else {
-                        EncryptedSharedPreferences.create(
-                            context,
-                            name,
-                            getMasterKey(context),
-                            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-                        )
-                    }
+        internal fun provideSharedPreferenceOpener(): PreferencesProvider =
+            PreferencesProvider { context, name, _ ->
+                if (BuildConfig.DEBUG) {
+                    context.getSharedPreferences(name, Context.MODE_PRIVATE)
+                } else {
+                    EncryptedSharedPreferences.create(
+                        context,
+                        name,
+                        getMasterKey(context),
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    )
+                }
             }
 
         private fun getMasterKey(context: Context): MasterKey =
