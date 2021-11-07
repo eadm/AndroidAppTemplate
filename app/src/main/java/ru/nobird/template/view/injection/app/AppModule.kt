@@ -2,22 +2,32 @@ package ru.nobird.template.view.injection.app
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
+import com.chibatching.kotpref.PreferencesProvider
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import io.reactivex.Scheduler
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import ru.nobird.android.view.injection.base.RxScheduler
+import java.security.SecureRandom
+import net.sqlcipher.database.SupportFactory
 import ru.nobird.android.view.injection.base.presentation.DaggerViewModelFactory
+import ru.nobird.template.BuildConfig
+import ru.nobird.template.cache.base.Cryptographer
+import ru.nobird.template.cache.common.AppDatabase
+import ru.nobird.template.cache.common.RoomConstants
+import ru.nobird.template.presentation.main.base.ActionDispatcherOptions
 import ru.nobird.template.remote.base.model.Config
 import ru.nobird.template.view.injection.qualifiers.AppSharedPreferences
 
 @Module
 abstract class AppModule {
     @Binds
-    internal abstract fun bindViewModelFactory(daggerViewModelFactory: DaggerViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(
+        daggerViewModelFactory: DaggerViewModelFactory
+    ): ViewModelProvider.Factory
 
     @Module
     companion object {
@@ -31,20 +41,81 @@ abstract class AppModule {
 
         @Provides
         @JvmStatic
-        @RxScheduler.Main
-        internal fun provideAndroidScheduler(): Scheduler =
-            AndroidSchedulers.mainThread()
+        internal fun provideActionDispatcherOptions(): ActionDispatcherOptions =
+            ActionDispatcherOptions()
 
         @Provides
-        @JvmStatic
-        @RxScheduler.Background
-        internal fun provideBackgroundScheduler(): Scheduler =
-            Schedulers.io()
+        @ApplicationScope
+        internal fun provideDataBase(
+            context: Context,
+            @AppSharedPreferences
+            sharedPreferences: SharedPreferences,
+            cryptographer: Cryptographer
+        ): AppDatabase {
+            var k = sharedPreferences.getString("d", null)
+            if (k == null) {
+                k = String(generateBytes())
+                val encK = cryptographer.encryptBase64(k)
+                sharedPreferences.edit { putString("d", encK) }
+            } else {
+                k = cryptographer.decryptBase64(k)
+            }
+
+            val builder = Room
+                .databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    RoomConstants.DB_BANE
+                )
+                .fallbackToDestructiveMigration()
+
+            if (!BuildConfig.DEBUG) {
+                builder.openHelperFactory(SupportFactory(k.toByteArray()))
+            }
+
+            return builder.build()
+        }
+
+        private fun generateBytes(): ByteArray =
+            ByteArray(128).also { SecureRandom().nextBytes(it) }
 
         @Provides
         @JvmStatic
         @AppSharedPreferences
-        internal fun provideSharedPreferences(context: Context): SharedPreferences =
-            context.getSharedPreferences("app_preferences", Context.MODE_PRIVATE)
+        @ApplicationScope
+        internal fun provideSharedPreferences(
+            context: Context,
+            preferencesOpener: PreferencesProvider
+        ): SharedPreferences =
+            preferencesOpener.get(context, "app_preferences", Context.MODE_PRIVATE)
+
+        @Provides
+        @JvmStatic
+        @ApplicationScope
+        internal fun provideSharedPreferenceOpener(): PreferencesProvider =
+            PreferencesProvider { context, name, _ ->
+                if (BuildConfig.DEBUG) {
+                    context.getSharedPreferences(name, Context.MODE_PRIVATE)
+                } else {
+                    EncryptedSharedPreferences.create(
+                        context,
+                        name,
+                        getMasterKey(context),
+                        EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                        EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                    )
+                }
+            }
+
+        private fun getMasterKey(context: Context): MasterKey =
+            MasterKey
+                .Builder(context)
+                .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+                .build()
+
+        @Provides
+        @JvmStatic
+        internal fun provideCryptographer(context: Context): Cryptographer =
+            Cryptographer(context)
     }
 }

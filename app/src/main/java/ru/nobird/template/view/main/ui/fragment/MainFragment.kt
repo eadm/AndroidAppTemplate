@@ -1,16 +1,23 @@
 package ru.nobird.template.view.main.ui.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import by.kirich1409.viewbindingdelegate.viewBinding
+import ru.nobird.android.view.redux.ui.extension.reduxViewModel
+import ru.nobird.app.presentation.redux.container.ReduxView
 import ru.nobird.template.App
 import ru.nobird.template.R
-import ru.nobird.template.presentation.main.MainPresenter
-import ru.nobird.template.presentation.main.MainView
+import ru.nobird.template.databinding.FragmentMainBinding
+import ru.nobird.template.presentation.main.MainFeature
+import ru.nobird.template.view.main.viewmodel.MainViewModel
 import javax.inject.Inject
 
-class MainFragment : Fragment(R.layout.fragment_main), MainView {
+class MainFragment :
+    Fragment(R.layout.fragment_main),
+    ReduxView<MainFeature.State, MainFeature.Action.ViewAction> {
+
     companion object {
         fun newInstance(): Fragment =
             MainFragment()
@@ -19,13 +26,14 @@ class MainFragment : Fragment(R.layout.fragment_main), MainView {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private lateinit var mainPresenter: MainPresenter
+    private val mainViewModel: MainViewModel by reduxViewModel(this) { viewModelFactory }
+
+    private val fragmentMainBinding by viewBinding(FragmentMainBinding::bind)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectComponent()
-
-        mainPresenter = ViewModelProviders.of(this, viewModelFactory).get(MainPresenter::class.java)
+        mainViewModel.onNewMessage(MainFeature.Message.Init)
     }
 
     private fun injectComponent() {
@@ -35,13 +43,15 @@ class MainFragment : Fragment(R.layout.fragment_main), MainView {
             .inject(this)
     }
 
-    override fun onStart() {
-        super.onStart()
-        mainPresenter.attachView(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        fragmentMainBinding.textView.setText(R.string.app_name)
     }
 
-    override fun onStop() {
-        mainPresenter.detachView(this)
-        super.onStop()
+    override fun render(state: MainFeature.State) {
+        // no op
+    }
+
+    override fun onAction(action: MainFeature.Action.ViewAction) {
+        // no op
     }
 }

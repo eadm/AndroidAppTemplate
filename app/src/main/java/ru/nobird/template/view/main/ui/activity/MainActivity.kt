@@ -2,15 +2,15 @@ package ru.nobird.template.view.main.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
+import com.github.terrakok.cicerone.androidx.AppNavigator
+import javax.inject.Inject
 import ru.nobird.android.view.navigation.ui.listener.BackButtonListener
 import ru.nobird.android.view.navigation.ui.listener.BackNavigable
 import ru.nobird.template.App
 import ru.nobird.template.R
 import ru.nobird.template.view.main.navigation.screen.MainScreen
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
-import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), BackNavigable {
 
@@ -20,9 +20,10 @@ class MainActivity : AppCompatActivity(), BackNavigable {
     @Inject
     internal lateinit var router: Router
 
-    private val navigator = SupportAppNavigator(this, supportFragmentManager, R.id.main_container)
+    private val navigator = AppNavigator(this, R.id.main_container, supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         injectComponent()
         setContentView(R.layout.activity_main)

@@ -1,17 +1,30 @@
 package ru.nobird.template.view.injection.main
 
 import androidx.lifecycle.ViewModel
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.multibindings.IntoMap
 import ru.nobird.android.view.injection.base.presentation.ViewModelKey
-import ru.nobird.template.presentation.main.MainPresenter
+import ru.nobird.app.presentation.redux.container.wrapWithViewContainer
+import ru.nobird.app.presentation.redux.dispatcher.wrapWithActionDispatcher
+import ru.nobird.app.presentation.redux.feature.ReduxFeature
+import ru.nobird.template.presentation.main.MainActionDispatcher
+import ru.nobird.template.presentation.main.MainFeature
+import ru.nobird.template.presentation.main.MainReducer
+import ru.nobird.template.view.main.viewmodel.MainViewModel
 
 @Module
-abstract class MainModule {
-
-    @Binds
+internal object MainModule {
+    @Provides
     @IntoMap
-    @ViewModelKey(MainPresenter::class)
-    internal abstract fun bindMainPresenter(mainPresenter: MainPresenter): ViewModel
+    @ViewModelKey(MainViewModel::class)
+    internal fun provideMainViewModel(
+        reducer: MainReducer,
+        actionDispatcher: MainActionDispatcher
+    ): ViewModel =
+        MainViewModel(
+            ReduxFeature(MainFeature.State.Idle, reducer)
+                .wrapWithActionDispatcher(actionDispatcher)
+                .wrapWithViewContainer()
+        )
 }
