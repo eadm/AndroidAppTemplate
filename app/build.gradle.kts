@@ -128,7 +128,7 @@ dependencies {
 
 ktlint {
     android.set(true)
-    disabledRules.set(listOf("package-name"))
+    disabledRules.set(listOf("package-name", "import-ordering"))
 }
 
 tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
