@@ -11,6 +11,8 @@ This project is starting point for android development. It will help you to skip
 - User data encryption (SharedPreferences + Room)
 - Material theme ready
 - Flipper debugger
+- CI (Ktlint check with GitHub actions)
+- PR templates
 
 ## Architecture
 
