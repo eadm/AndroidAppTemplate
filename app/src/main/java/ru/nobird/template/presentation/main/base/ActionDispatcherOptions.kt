@@ -3,7 +3,7 @@ package ru.nobird.template.presentation.main.base
 import android.util.Log
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import ru.nobird.android.presentation.redux.dispatcher.CoroutineActionDispatcher
+import ru.nobird.app.presentation.redux.dispatcher.CoroutineActionDispatcher
 
 /**
  * Null scope means ActionDispatcher can decide for itself
@@ -14,12 +14,22 @@ class ActionDispatcherOptions(
     override val messageParentScope: CoroutineScope? = null
 ) : CoroutineActionDispatcher.ScopeConfigOptions {
 
-    override val actionScopeExceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("ActionScopeException", "ActionDispatcher: exception on action scope", throwable)
-    }
+    override val actionScopeExceptionHandler: CoroutineExceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            Log.e(
+                "ActionScopeException",
+                "ActionDispatcher: exception on action scope",
+                throwable
+            )
+        }
 
-    override val messageScopeExceptionHandler: CoroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("MessageScopeException", "ActionDispatcher: exception on message scope", throwable)
-        throw throwable // rethrow
-    }
+    override val messageScopeExceptionHandler: CoroutineExceptionHandler =
+        CoroutineExceptionHandler { _, throwable ->
+            Log.e(
+                "MessageScopeException",
+                "ActionDispatcher: exception on message scope",
+                throwable
+            )
+            throw throwable // rethrow
+        }
 }

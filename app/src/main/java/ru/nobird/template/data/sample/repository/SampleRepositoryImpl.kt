@@ -1,11 +1,11 @@
 package ru.nobird.template.data.sample.repository
 
+import javax.inject.Inject
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import ru.nobird.template.data.sample.source.SampleRemoteDataSource
 import ru.nobird.template.domain.base.DataSourceType
 import ru.nobird.template.domain.sample.model.SampleEntry
 import ru.nobird.template.domain.sample.repository.SampleRepository
-import javax.inject.Inject
 
 class SampleRepositoryImpl
 @Inject

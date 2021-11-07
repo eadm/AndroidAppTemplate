@@ -5,8 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.kirich1409.viewbindingdelegate.viewBinding
-import ru.nobird.android.presentation.redux.container.ReduxView
 import ru.nobird.android.view.redux.ui.extension.reduxViewModel
+import ru.nobird.app.presentation.redux.container.ReduxView
 import ru.nobird.template.App
 import ru.nobird.template.R
 import ru.nobird.template.databinding.FragmentMainBinding

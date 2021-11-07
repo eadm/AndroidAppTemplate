@@ -1,10 +1,10 @@
 package ru.nobird.template.cache.sample
 
+import javax.inject.Inject
 import ru.nobird.template.cache.sample.dao.SampleDao
 import ru.nobird.template.cache.sample.mapper.SampleDbMapper
 import ru.nobird.template.data.sample.source.SampleCacheDataSource
 import ru.nobird.template.domain.sample.model.SampleEntry
-import javax.inject.Inject
 
 class SampleCacheDataSourceImpl
 @Inject

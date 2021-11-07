@@ -59,11 +59,13 @@ class Cryptographer(
                 KEY_STORE
             )
             keyGenerator.init(
-                KeyGenParameterSpec.Builder(
-                    KEY_ALIAS,
-                    KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-                )
-                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
+                KeyGenParameterSpec
+                    .Builder(
+                        KEY_ALIAS,
+                        KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+                    )
+                    .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
+                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE)
                     .setRandomizedEncryptionRequired(false)
                     .build()
             )
@@ -112,13 +114,21 @@ class Cryptographer(
 
     private fun encryptAes(secret: ByteArray): ByteArray {
         val c = Cipher.getInstance(AES_MODE)
-        c.init(Cipher.ENCRYPT_MODE, getSecretKey(KEY_ALIAS), GCMParameterSpec(128, FIXED_IV.toByteArray()))
+        c.init(
+            Cipher.ENCRYPT_MODE,
+            getSecretKey(KEY_ALIAS),
+            GCMParameterSpec(128, FIXED_IV.toByteArray())
+        )
         return c.doFinal(secret)
     }
 
     private fun decryptAes(encrypted: ByteArray): ByteArray {
         val c = Cipher.getInstance(AES_MODE)
-        c.init(Cipher.DECRYPT_MODE, getSecretKey(KEY_ALIAS), GCMParameterSpec(128, FIXED_IV.toByteArray()))
+        c.init(
+            Cipher.DECRYPT_MODE,
+            getSecretKey(KEY_ALIAS),
+            GCMParameterSpec(128, FIXED_IV.toByteArray())
+        )
         return c.doFinal(encrypted)
     }
 

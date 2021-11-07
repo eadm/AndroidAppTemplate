@@ -1,10 +1,10 @@
 package ru.nobird.template.view.injection.app
 
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 import dagger.Module
 import dagger.Provides
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 
 @Module
 internal class AppNavigationModule {
@@ -18,5 +18,5 @@ internal class AppNavigationModule {
     @ApplicationScope
     @Provides
     internal fun provideNavigatorHolder(): NavigatorHolder =
-        cicerone.navigatorHolder
+        cicerone.getNavigatorHolder()
 }

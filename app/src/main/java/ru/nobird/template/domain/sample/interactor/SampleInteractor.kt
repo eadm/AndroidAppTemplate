@@ -1,8 +1,8 @@
 package ru.nobird.template.domain.sample.interactor
 
+import javax.inject.Inject
 import ru.nobird.template.domain.sample.model.SampleEntry
 import ru.nobird.template.domain.sample.repository.SampleRepository
-import javax.inject.Inject
 
 class SampleInteractor
 @Inject
