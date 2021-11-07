@@ -3,7 +3,7 @@ package ru.nobird.template.presentation.main.base
 import android.util.Log
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
-import ru.nobird.android.presentation.redux.dispatcher.CoroutineActionDispatcher
+import ru.nobird.app.presentation.redux.dispatcher.CoroutineActionDispatcher
 
 /**
  * Null scope means ActionDispatcher can decide for itself

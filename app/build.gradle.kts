@@ -25,7 +25,7 @@ android {
     signingConfigs {
     }
 
-    lintOptions {
+    lint {
         isWarningsAsErrors = false // after fixing existing errors set to true for fixing warnings
         isAbortOnError = false // after fixing existing errors set to true for failing fast
         lintConfig = rootProject.file("lint.xml")

@@ -2,7 +2,7 @@ package ru.nobird.template.presentation.main
 
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
-import ru.nobird.android.presentation.redux.dispatcher.CoroutineActionDispatcher
+import ru.nobird.app.presentation.redux.dispatcher.CoroutineActionDispatcher
 import ru.nobird.template.domain.sample.interactor.SampleInteractor
 import ru.nobird.template.presentation.main.base.ActionDispatcherOptions
 

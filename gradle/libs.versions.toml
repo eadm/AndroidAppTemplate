@@ -23,13 +23,13 @@ viewBindingDelegate = '1.4.2'
 
 adapterDelegates = '1.1.0'
 adapters = '1.1.0'
-presentationRedux = '1.1.0'
-presentationReduxCoroutines = '1.2.0'
+presentationRedux = '1.3.0'
+presentationReduxCoroutines = '1.3.0'
 viewUI = '1.0.11'
-viewRedux = '1.0.9'
+viewRedux = '1.3.0'
 viewNavigation = '1.0.2'
 viewInjection = '1.0.1'
-model = '1.0.6'
+model = '1.0.7'
 
 cicerone = '7.1'
 
@@ -85,13 +85,13 @@ viewBindingDelegate = { module = "com.kirich1409.viewbindingpropertydelegate:vbp
 #AndroidKit
 adapterDelegates = { module = "ru.nobird.android.ui:adapter-delegates", version.ref = "adapterDelegates" }
 adapters = { module = "ru.nobird.android.ui:adapters", version.ref = "adapters" }
-presentationRedux = { module = "ru.nobird.android.presentation:redux", version.ref = "presentationRedux" }
-presentationReduxCoroutines = { module = "ru.nobird.android.presentation:redux-coroutines", version.ref = "presentationReduxCoroutines" }
+presentationRedux = { module = "ru.nobird.app.presentation:presentation-redux", version.ref = "presentationRedux" }
+presentationReduxCoroutines = { module = "ru.nobird.app.presentation:presentation-redux-coroutines", version.ref = "presentationReduxCoroutines" }
 viewUI = { module = "ru.nobird.android.view:ui", version.ref = "viewUI" }
 viewRedux = { module = "ru.nobird.android.view:redux", version.ref = "viewRedux" }
 viewNavigation = { module = "ru.nobird.android.view:navigation", version.ref = "viewNavigation" }
 viewInjection = { module = "ru.nobird.android.view:injection", version.ref = "viewInjection" }
-model = { module = "ru.nobird.android.core:model", version.ref = "model" }
+model = { module = "ru.nobird.app.core:model", version.ref = "model" }
 
 permissionDispatcher = { module = "org.permissionsdispatcher:permissionsdispatcher", version.ref = "permissionDispatcher" }
 permissionDispatcherProcessor = { module = "org.permissionsdispatcher:permissionsdispatcher-processor", version.ref = "permissionDispatcher" }

@@ -1,7 +1,7 @@
 package ru.nobird.template.presentation.main
 
 import javax.inject.Inject
-import ru.nobird.android.presentation.redux.reducer.StateReducer
+import ru.nobird.app.presentation.redux.reducer.StateReducer
 import ru.nobird.template.presentation.main.MainFeature.Action
 import ru.nobird.template.presentation.main.MainFeature.Message
 import ru.nobird.template.presentation.main.MainFeature.State
